@@ -20,36 +20,7 @@
         <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>   
     </head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="mainpage.jsp"><img src="./images/mainlogo.jpg" alt="" width="140" height="50"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav nav-tabs">
-  						<li class="nav-item">
-   							 <a class="nav-link active" aria-current="page" href="mainpage.jsp">Home</a>
-  						</li>
-  						<li class="nav-item">
-    						 <a class="nav-link" style="color: black" href="loginpage.html">로그인</a>
-  						</li>
-  						<li class="nav-item">
-					    	<a class="nav-link" style="color: black" href="registerpage.html">회원가입</a>
-					 	</li>
-					</ul>
-                    <form id="search" class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-6">
-                    	<input type = "text" name = "search" value = "" size=70  style ="border: solid 1px ; border-radius: 8px;"/>&nbsp&nbsp
-                    	<button type = "submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
-                    </form>
-
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                           <a style="color: gray" href="mypage.jsp">마이페이지</a>
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">my</span>
-                    </button>
-                </div>
-            </div>
-        </nav>
+        <%@ include file="./module/header.jsp" %>
         <!-- Header-->
         <header class="bg-danger py-4" style="--bs-bg-opacity: .6;">
             <div class="container px-4 px-lg-5 my-5">
@@ -72,9 +43,7 @@
 		<%
 			}
 		%>
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Dongguk University &copy; WebProgramming 2021</p></div>
-        </footer>
+        <%@ include file="./module/footer.html" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
