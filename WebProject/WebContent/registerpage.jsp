@@ -28,7 +28,7 @@
     </head>
     <body>
         <%@ include file="./module/header.jsp" %>
-		<header class="bg-danger py-4" style="--bs-bg-opacity: .6;">
+		<header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">바 겐 옥 션</h1>
@@ -40,48 +40,49 @@
         	<div class="container"> 
 	        	<div class="input-form-backgroud row"> 
 	        		<div class="input-form col-md-12 mx-auto"> 
-	        			<h4 class="mb-3">Bargain Auction 회원가입</h4> 
-	        			<form class="validation-form" novalidate> 
+	        			<h4 class="text-center mb-3">Bargain Auction 회원가입</h4> 
+	        			<form class="needs-validation" novalidate> 
 	        				<div class="row"> 
 	        					<div class="col-md-6 mb-3"> 
-	        						<label for="id">아이디</label> 
-	        						<input type="text" class="form-control" id="id" placeholder="" value="" required> 
+	        						<label class="form-label" for="id">아이디</label> 
+	        						<input type="text" class="form-control" id="id" placeholder="ID" value="" required> 
 	        						<div class="invalid-feedback"> 아이디를 입력해주세요. </div> 
 	        					</div> 
 	        					<div class="col-md-6 mb-3"> 
-	        						<label for="name">닉네임</label> 
-	        						<input type="text" class="form-control" id="name" placeholder="" value="" required> 
+	        						<label class="form-label" for="name">닉네임</label> 
+	        						<input type="text" class="form-control" id="name" placeholder="Nickname" value="" required> 
 	        						<div class="invalid-feedback"> 이름을 입력해주세요. </div> 
 	        					</div> 
 	        				</div>
 	        				<div class="mb-3"> 
-	        					<label for="password">비밀번호</label> 
-	        					<input type="password" class="form-control" id="password" placeholder="password" required> 
+	        					<label class="form-label" for="password">비밀번호</label> 
+	        					<input type="password" class="form-control" id="password" placeholder="PASSWORD" required> 
 	        					<div class="invalid-feedback"> 비밀번호를 입력해주세요. </div> 
 	        				</div> 
 	        				<div class="mb-3"> 
-	        					<label for="email">이메일</label> 
+	        					<label class="form-label" for="email">이메일</label> 
 	        					<input type="email" class="form-control" id="email" placeholder="you@example.com" required> 
 	        					<div class="invalid-feedback"> 이메일을 입력해주세요. </div> 
 	        				</div> 
 	        				<div class="mb-3"> 
-	        					<label for="address">주소</label> 
+	        					<label class="form-label" for="address">주소</label> 
 	        					<input type="text" class="form-control" id="address" placeholder="서울특별시 중구" required> 
 	        					<div class="invalid-feedback"> 주소를 입력해주세요. </div> 
 	        				</div> 
 	        				<div class="mb-3"> 
-	        					<label for="address2">상세주소</label> 
+	        					<label class="form-label" for="address2">상세주소</label> 
 	        					<input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요." required> 
 	        				</div>
-							<hr class="mb-4"> 
-							<div class="custom-control custom-checkbox"> 
+							<hr class="mb-3"> 
+							<div class="custom-control custom-checkbox mb-3"> 
 								<input type="checkbox" class="custom-control-input" id="aggrement" required> 
 								<label class="custom-control-label" for="aggrement">개인정보 수집 및 이용에 동의합니다.</label> 
 							</div> 
-							<div class="mb-4"></div> 
-							<button class="btn btn-primary btn-lg btn-block" type="submit">가입 완료</button>
-							<button class="btn btn-primary btn-lg btn-block" onclick="location.href='loginpage.html'">로그인</button>  
-						</form> 
+							<div class="d-flex justify-content-end">
+								<button class="btn btn-primary btn-md btn-block" type="submit">가입 완료</button>
+							</div>
+							
+							</form> 
 					</div> 
 				</div> 
 			</div> 	

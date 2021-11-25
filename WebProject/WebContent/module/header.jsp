@@ -3,46 +3,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	 	<%
+	 		// session.setAttribute("id", "asdf");
+	 		// session.removeAttribute("id");
+			String id = null;		//아이디 저장 변수
+			id = (String)session.getAttribute("id");
+			
+		%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="mainpage.jsp"><img src="./images/mainlogo.png" alt="" width="140" height="50"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav nav-tabs">
-  						<li class="nav-item">
-   							 <a class="nav-link active" aria-current="page" href="mainpage.jsp">Home</a>
-  						</li>
-  						<li class="nav-item">
-    						 <a class="nav-link" style="color: black" href="loginpage.jsp">로그인</a>
-  						</li>
-  						<li class="nav-item">
-					    	<a class="nav-link" style="color: black" href="registerpage.jsp">회원가입</a>
-					 	</li>
-					</ul>
-                    <form id="search" class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-6">
-                    	<input type = "text" name = "search" value = "" size=70  style ="border: solid 1px ; border-radius: 8px;"/>&nbsp&nbsp
-                    	<button type = "submit" class="btn btn-outline-dark"><i class="fas fa-search"></i></button>
-                    </form>
-
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                           <a style="color: gray" href="mypage.jsp">마이페이지</a>
-                        <span class="badge bg-dark text-white ms-1 rounded-pill">my</span>
-                    </button>
-                    
-                </div>
-            </div>
-        </nav> -->
 
  		<nav class="navbar navbar-expand-lg navbar-light bg-light flex-column">
 			<div class="ms-auto container px-4 px-lg-5 justify-content-end text-secondary">
+			
+			<% if(id == null) { %>
 	       		<a href="./registerpage.jsp" class="text-secondary" style="text-decoration: none">회원가입</a>
 	        	<span className="mr-2 ml-2">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 	        	<a href="./loginpage.jsp" class="text-secondary" style="text-decoration: none">로그인</a>
+	        	<% } else { // 세션이 있는 경우, 로그인이 되어있는 경우 %>
+	        	<a href="./registerpage.jsp" class="text-secondary" style="text-decoration: none">로그아웃</a>
+	        	<span className="mr-2 ml-2">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+	        	<a class="text-secondary" style="text-decoration: none"><span style="color: #991b1b;"><%= id %></span>&nbsp님 반가워요!</a>
+	        	<% } %>
         	</div>
             <div class="container px-4 px-lg-5 flex-row justify-content-between">
             

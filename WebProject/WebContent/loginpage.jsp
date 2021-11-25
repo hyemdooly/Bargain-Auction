@@ -29,7 +29,7 @@
     <body>
         <!-- Header -->
         <%@ include file="./module/header.jsp" %>
-        <header class="bg-danger py-4" style="--bs-bg-opacity: .6;">
+        <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">바 겐 옥 션</h1>
@@ -41,21 +41,23 @@
         	<div class="container"> 
 	        	<div class="input-form-backgroud row"> 
 	        		<div class="input-form col-md-12 mx-auto"> 
-	        			<h4 class="mb-3">Bargain Auction 로그인</h4> 
-	        			<form class="validation-form" novalidate> 
+	        			<h4 class="text-center mb-3">Bargain Auction 로그인</h4> 
+	        			<form name="needs-validation" novalidate> 
 	        				<div class="mb-3"> 
-	        					<label for="id">아이디</label> 
-	        					<input type="text" class="form-control" id="id" placeholder="" required> 
-	        					<div class="invalid-feedback"> 아이디를 입력해주세요. </div> 
+	        					<label class="form-label" for="id">아이디</label> 
+	        					<input type="text" class="form-control" id="id" placeholder="ID" required> 
+	        					<div class="invalid-feedback"> 아이디를 입력해주세요. </div>
 	        				</div> 
-	        				<div class="mb-3"> 
-	        					<label for="password">비밀번호</label> 
-	        					<input type="password" class="form-control" id="password" placeholder="password" required> 
-	        					<div class="invalid-feedback"> 비밀번호를 입력해주세요. </div> 
+	        				<div class="mb-4"> 
+	        					<label class="form-label" for="password">비밀번호</label> 
+	        					<input type="password" class="form-control" id="password" placeholder="PASSWORD" required> 
+	        					<div class="invalid-feedback"> 패스워드를 입력해주세요. </div>
 	        				</div> 
-							<div class="mb-4"></div> 
-							<button class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
-							<button class="btn btn-primary btn-lg btn-block" onclick="location.href='registerpage.html'">회원가입</button>  
+	        				<div class="d-flex gap-2 justify-content-end">
+	        					<button class="btn btn-secondary btn-md btn-block" onclick="location.href='registerpage.jsp'">회원가입</button>
+	        					<button class="btn btn-primary btn-md btn-block" type="submit">로그인</button> 
+	        				</div>
+
 						</form> 
 					</div> 
 				</div> 

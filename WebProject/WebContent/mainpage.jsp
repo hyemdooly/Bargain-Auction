@@ -16,7 +16,7 @@
         <!-- Header -->
         <%@ include file="./module/header.jsp" %>
 
-        <header class="bg-danger py-4" style="--bs-bg-opacity: .6;">
+        <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">바 겐 옥 션</h1>

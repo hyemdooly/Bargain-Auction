@@ -6,10 +6,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  	<head>
-	 	<%
-			String id = null;		//아이디 저장 변수
-			id = (String)session.getAttribute("id");
-		%>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -22,7 +18,7 @@
     <body>
         <%@ include file="./module/header.jsp" %>
         <!-- Header-->
-        <header class="bg-danger py-4" style="--bs-bg-opacity: .6;">
+        <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">바 겐 옥 션</h1>
