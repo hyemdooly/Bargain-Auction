@@ -30,9 +30,12 @@
 			//세션이 없는 경우
 			if(id == null){
 		%>
-				<center><h1>로그인 후 이용 가능합니다.</h1><br>
-				<button class="btn btn-primary btn-lg btn-block" onclick="location.href='loginpage.html'">로그인</button></center>
+				<script>
+				alert("로그인 후 이용해주세요.");
+				location.href = "loginpage.jsp";
+				</script>
 		<%
+			//response.sendRedirect("loginpage.jsp");
 			}else{
 		%>
 			<h1><center>${id}님의 마이페이지입니다.</center></h1>
