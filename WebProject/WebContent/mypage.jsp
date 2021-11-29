@@ -28,17 +28,87 @@
         </header>
         <%
 			//세션이 없는 경우
-			if(id == null){
+			if((String)session.getAttribute("id") == null){
 		%>
 				<script>
 				alert("로그인 후 이용해주세요.");
-				location.href = "loginpage.jsp";
+				location.href = "loginpage.html";
 				</script>
 		<%
 			//response.sendRedirect("loginpage.jsp");
 			}else{
 		%>
-			<h1><center>${id}님의 마이페이지입니다.</center></h1>
+			<div class="container">
+			  <div class="row row-cols-2">
+			    <div class="col">
+				    <h3>내 경매</h3>
+				    <center> 
+				    <table  class="table table-bordered ">
+					  <thead>
+					    <tr class="table-secondary">
+					      <th scope="col">물품명</th>
+					      <th scope="col">현재가</th>
+					      <th scope="col">진행 상태</th>
+					      <th scope="col">비고</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <!-- 여기는 정보를 가져와야함 -->
+					    <tr>
+					      <th scope="row">루이비통 가방</th>
+					      <td>4,500,000</td>
+					      <td>진행 완료</td>
+					      <td><div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">송장번호 입력</a></div>
+			               	</div></td>
+					    </tr>
+					    <tr>
+					      <th scope="row">구찌 지갑</th>
+					      <td>1,200,000</td>
+					      <td>진행 완료</td>
+					      <td>
+					      	<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">송장번호 입력</a></div>
+			               	</div></td>
+					    </tr>
+					  </tbody>
+					</table>
+					</center>
+			    </div>
+			    <div class="col">
+			    	<h3>참여한 경매</h3>
+				    <center> 
+				    <table  class="table table-bordered ">
+					  <thead>
+					    <tr class="table-secondary">
+					      <th scope="col">물품명</th>
+					      <th scope="col">현재가</th>
+					      <th scope="col">진행 상태</th>
+					      <th scope="col">비고</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  <!-- 여기는 정보를 가져와야함 -->
+					    <tr>
+					      <th scope="row">루이비통 가방</th>
+					      <td>4,500,000</td>
+					      <td>진행 완료</td>
+					      <td>2020111980</td>
+					    </tr>
+					    <tr>
+					      <th scope="row">구찌 지갑</th>
+					      <td>1,200,000</td>
+					      <td>진행 완료</td>
+					      <td>2020111980</td>
+					    </tr>
+					  </tbody>
+					</table>
+					</center>
+			    </div>
+			    <div class="col"></div>
+			    <div class="col"></div>
+			  </div>
+			</div>  
 		<%
 			}
 		%>

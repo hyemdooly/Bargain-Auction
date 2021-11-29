@@ -17,11 +17,11 @@
 			<div class="ms-auto container px-4 px-lg-5 justify-content-end text-secondary">
 			
 			<% if(id == null) { %>
-	       		<a href="./registerpage.jsp" class="text-secondary" style="text-decoration: none">회원가입</a>
+	       		<a href="./registerpage.html" class="text-secondary" style="text-decoration: none">회원가입</a>
 	        	<span class="mr-2 ml-2">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-	        	<a href="./loginpage.jsp" class="text-secondary" style="text-decoration: none">로그인</a>
+	        	<a href="./loginpage.html" class="text-secondary" style="text-decoration: none">로그인</a>
 	        	<% } else { // 세션이 있는 경우, 로그인이 되어있는 경우 %>
-	        	<a href="./registerpage.jsp" class="text-secondary" style="text-decoration: none">로그아웃</a>
+	        	<a href="./logout.jsp" class="text-secondary" style="text-decoration: none">로그아웃</a>
 	        	<span class="mr-2 ml-2">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
 	        	<a class="text-secondary" style="text-decoration: none"><span style="color: #991b1b;"><%= id %></span>&nbsp님 반가워요!</a>
 	        	<% } %>
