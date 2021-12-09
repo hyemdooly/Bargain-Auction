@@ -15,7 +15,7 @@
     <% String keyword = request.getParameter("keyword"); %>
 <body>
 		<!-- Header -->
-        <%@ include file="./module/header.jsp" %>
+        <%@ include file="./module/header.jsp"%>
 
         <section class="py-5 bg-light">
                 <h3 class="text-center">검색어 '<%= keyword %>'에 대한 결과</h3>

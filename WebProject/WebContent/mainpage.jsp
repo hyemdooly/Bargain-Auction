@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- Header -->
-        <%@ include file="./module/header.html" %>
+        <%@ include file="./module/header.jsp"%>
 
         <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
@@ -231,9 +231,7 @@
             </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Dongguk University &copy; WebProgramming 2021</p></div>
-        </footer>
+        <%@ include file="./module/footer.html" %>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

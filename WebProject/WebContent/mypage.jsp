@@ -16,7 +16,7 @@
         <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>   
     </head>
     <body>
-        <%@ include file="./module/header.jsp" %>
+        <%@ include file="./module/header.jsp"%>
         <!-- Header-->
         <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
@@ -32,7 +32,7 @@
 		%>
 				<script>
 				alert("로그인 후 이용해주세요.");
-				location.href = "loginpage.jsp";
+				location.href = "loginpage.html";
 				</script>
 		<%
 			//response.sendRedirect("loginpage.jsp");
