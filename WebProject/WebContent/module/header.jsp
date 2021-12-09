@@ -5,10 +5,10 @@
 	<meta charset="utf-8" />
  	<head>
        <script type="text/javascript">
-	 		const id = sessionStorage.getItem("id");
+	 		const id = "${id}";
 	 		console.log(id);
 	 		window.onload = function() {
-	 			if(id != null) {
+	 			if(id != "") {
 	 				const left = document.getElementById('main_left');
 	 				left.innerText = "로그아웃";
 	 				left.href = "./logout.jsp";
@@ -16,6 +16,14 @@
 	 				const right = document.getElementById("main_right");
 	 				right.innerHTML = "<span style='color: #991b1b;'>"+id+"</span>&nbsp님 반가워요!";
 	 				right.href = "";
+	 			} else {
+	 				const left = document.getElementById('main_left');
+	 				left.innerText = "회원가입";
+	 				left.href = "./registerpage.html";
+	 					
+	 				const right = document.getElementById("main_right");
+	 				right.innerHTML = "로그인";
+	 				right.href = "./loginpage.html";
 	 			}
 	 		}
 		</script>
