@@ -14,7 +14,7 @@
     </head>
     <body>
         <!-- Header -->
-        <%@ include file="./module/header.jsp" %>
+        <%@ include file="./module/header.html" %>
 
         <header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">

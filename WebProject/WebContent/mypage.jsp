@@ -32,7 +32,7 @@
 		%>
 				<script>
 				alert("로그인 후 이용해주세요.");
-				location.href = "loginpage.html";
+				location.href = "loginpage.jsp";
 				</script>
 		<%
 			//response.sendRedirect("loginpage.jsp");

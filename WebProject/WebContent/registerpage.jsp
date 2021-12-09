@@ -50,7 +50,7 @@
 	        					</div> 
 	        					<div class="col-md-6 mb-3"> 
 	        						<label class="form-label" for="name">닉네임</label> 
-	        						<input type="text" class="form-control" id="name" placeholder="Nickname" value="" required> 
+	        						<input type="text" class="form-control" id="name" placeholder="NICKNAME" value="" required> 
 	        						<div class="invalid-feedback"> 이름을 입력해주세요. </div> 
 	        					</div> 
 	        				</div>
@@ -66,7 +66,7 @@
 	        				</div> 
 	        				<div class="mb-3"> 
 	        					<label class="form-label" for="address">주소</label> 
-	        					<input type="text" class="form-control" id="address" placeholder="서울특별시 중구" required> 
+	        					<input type="text" class="form-control" id="address" placeholder="주소를 입력해주세요." required> 
 	        					<div class="invalid-feedback"> 주소를 입력해주세요. </div> 
 	        				</div> 
 	        				<div class="mb-3"> 
