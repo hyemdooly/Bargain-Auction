@@ -11,6 +11,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     	<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    	
     </head>
     <body>
         <!-- Header -->
@@ -24,6 +25,12 @@
                 </div>
             </div>
         </header>
+        
+        <div class="container text-center pt-5">
+            <h4 class="pb-3">값어치 있는 물건을 경매에 올려보세요!</h4>
+       		<input type="button" class="btn btn-outline-primary" value="경매 올리기" onclick="location='uploaditempage.jsp'"/> <!-- 경매 올리는 페이지 생성 후 고칠  -->
+        </div>
+
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">

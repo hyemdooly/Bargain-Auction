@@ -18,6 +18,7 @@
 	int count = 0;
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
+	String mid = "";
        
 	
 	try{
@@ -33,6 +34,8 @@
 		rs = pstmt.executeQuery();
 		rs.last();
 		count = rs.getRow();
+		rs.beforeFirst();
+		mid = rs.getString("mid");
 		
 		rs.close();
 		pstmt.close();
@@ -48,6 +51,7 @@
 	//로그인 성공시(count 변수는 찾은 아이디의 개수를 저장)
 	if(count > 0){
 		session.setAttribute("id", id);
+		session.setAttribute("mid", mid);
 		response.sendRedirect("mainpage.jsp"); 
 	}
 	else{	//로그인 실패시
