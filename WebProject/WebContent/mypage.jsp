@@ -38,14 +38,14 @@
 			//response.sendRedirect("loginpage.jsp");
 			}else{
 		%>
-			<div class="container">
+			<div class="container mt-5 mb-5">
 			  <div class="row row-cols-2">
 			    <div class="col">
 				    <h3>내 경매</h3>
 				    <center> 
-				    <table  class="table table-bordered ">
+				    <table class="table table-bordered ">
 					  <thead>
-					    <tr class="table-secondary">
+					    <tr class="table-primary">
 					      <th scope="col">물품명</th>
 					      <th scope="col">현재가</th>
 					      <th scope="col">진행 상태</th>
@@ -76,15 +76,15 @@
 					</center>
 			    </div>
 			    <div class="col">
-			    	<h3>참여한 경매</h3>
+			    	<h3>낙찰된 경매</h3>
 				    <center> 
 				    <table  class="table table-bordered ">
 					  <thead>
-					    <tr class="table-secondary">
+					    <tr class="table-primary">
 					      <th scope="col">물품명</th>
 					      <th scope="col">현재가</th>
 					      <th scope="col">진행 상태</th>
-					      <th scope="col">비고</th>
+					      <th scope="col">송장번호</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -105,8 +105,39 @@
 					</table>
 					</center>
 			    </div>
-			    <div class="col"></div>
-			    <div class="col"></div>
+			    <div class="col">
+			    	<h3>포인트 충전</h3>
+				    <center>
+					    <div class="row row-cols-2 py-3 border border-2 rounded w-100">
+						    <div class="text-center m-auto">
+						    	<h4>현재 포인트</h4>
+						    	<h3>50,000</h3>
+						    </div>
+						    <div class="text-center">
+						    	<input type="text" class="form-control" placeholder="충전할 포인트" name="charge_point"/>
+						    	<button class="btn btn-primary mt-2">포인트 충전</button>
+						    </div>
+					    </div>
+				    </center>
+			    </div>
+			    
+			    <div class="col">
+			    	<h3>정보 수정</h3>
+				    <center>
+					    <div class="row row-cols-2 py-3 border border-2 rounded w-100">
+						    <div class="text-center m-auto">
+						    	<input type="text" class="form-control" placeholder="주소" name="address"/>
+						    	<input type="text" class="form-control mt-2" placeholder="상세 주소" name="address_detail"/>
+						    	<button class="btn btn-primary mt-2">주소 변경</button>
+						    </div>
+						    <div class="text-center">
+						    	<input type="text" class="form-control" placeholder="새 비밀번호" name="new_password"/>
+						    	<input type="text" class="form-control mt-2" placeholder="비밀번호 확인" name="new_password_confirm"/>
+						    	<button class="btn btn-primary mt-2">비밀번호 변경</button>
+						    </div>
+					    </div>
+				    </center>
+			    </div>
 			  </div>
 			</div>  
 		<%

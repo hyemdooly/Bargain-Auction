@@ -98,6 +98,7 @@
                   </div>
              </div>
         </section>
+        <%@ include file="./module/footer.html" %>
 
 </body>
 </html>

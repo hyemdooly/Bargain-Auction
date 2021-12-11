@@ -27,6 +27,7 @@
 		int currentPrice = 0;
 		int id = Integer.parseInt(request.getParameter("id"));
 		int upload_mem_id = 0;
+		int current_point = 0;
 		
 		try {
 			sql = "select * from item where id="+request.getParameter("id");
@@ -78,6 +79,13 @@
                 </div>
             </div>
             <% }
+			
+			sql = "select * from member where mid="+session.getAttribute("mid");
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				current_point = rs.getInt("point");
+			}
+			
 		} catch(Exception e) {%>
 			<script>
 				alert("에러가 발생했습니다. 잠시 후 시도해주세요.");
@@ -89,9 +97,7 @@
             %>
         </section>
         <!-- Footer-->
-       <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Dongguk University &copy; WebProgramming 2021</p></div>
-        </footer>
+       <%@ include file="./module/footer.html" %>
         <script type="text/javascript">
 			function submit() {
 				var price = document.getElementById("price").value;
@@ -108,6 +114,8 @@
 				} else {
 					if(current_price >= price) {
 						alert("현재가보다 높은 가격을 입력해주세요.");
+					} else if(price > <%= current_point %>){
+						alert("입력한 금액이 현재 지니고 있는 금액보다 큽니다.")
 					} else {
 						alert("경매 신청을 완료했습니다!");
 						location.href = "itempage-result.jsp?item_id="+<%=id%>+"&price="+price;

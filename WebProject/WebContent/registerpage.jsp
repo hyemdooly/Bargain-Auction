@@ -56,7 +56,7 @@
 	} else {
 		try{
 			// insert
-	        sql = "insert into member(id, nickname, password, email, address, address_detail) value(?, ?, ?, ?, ?, ?)";
+	        sql = "insert into member(id, nickname, password, email, address, address_detail, point) value(?, ?, ?, ?, ?, ?, 0)";
 	        pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	
 			pstmt.setString(1, id);
@@ -74,8 +74,13 @@
 	        System.out.println("DB 접속 실패");
 	        e.printStackTrace();
 	    }
+		%> 
+		<script type="text/javascript">
+			alert("가입이 완료되었습니다!");
+			location.href = "mainpage.jsp";
+		</script>
+	<%
 		
-		response.sendRedirect("mainpage.jsp");
 	}
 	
 %>

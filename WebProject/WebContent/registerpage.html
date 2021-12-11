@@ -26,11 +26,7 @@
     </head>
     <body>
         <div id="header"></div>
-		<script>
-        	$(document).ready( function() { 
-        		$("#header").load("module/header.html");
-        	});
-	    </script>
+
 		<header class="bg-primary py-4" style="--bs-bg-opacity: .9;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
@@ -103,7 +99,13 @@
         		}); 
         	}, false); 
         </script>
-        <%@ include file="./module/footer.html" %>
+       <div id="footer"> </div>
+       	<script>
+        	$(document).ready( function() { 
+        		$("#header").load("module/header.html");
+        		$("#footer").load("module/footer.html");
+        	});
+	    </script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
