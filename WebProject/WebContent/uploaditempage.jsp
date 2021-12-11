@@ -12,26 +12,41 @@
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
         <script>
-        function previewImage(event) {
-        	var input = event.target;
-            // 인풋 태그에 파일이 있는 경우
-            if(input.files && input.files[0]) {
-                // 이미지 파일인지 검사 (생략)
-                // FileReader 인스턴스 생성
-                const reader = new FileReader()
-                // 이미지가 로드가 된 경우
-                reader.onload = e => {
-                    const previewImage = document.getElementById("preview_image")
-                    previewImage.src = e.target.result
-                }
-                // reader가 이미지 읽도록 하기
-                reader.readAsDataURL(input.files[0])
-            }
-        }
+	        function previewImage(event) {
+	        	var input = event.target;
+	            // 인풋 태그에 파일이 있는 경우
+	            if(input.files && input.files[0]) {
+	                // 이미지 파일인지 검사 (생략)
+	                // FileReader 인스턴스 생성
+	                const reader = new FileReader()
+	                // 이미지가 로드가 된 경우
+	                reader.onload = function(event) {
+	                    const previewImage = document.getElementById("preview_image")
+	                    previewImage.src = event.target.result
+	                }
+	                // reader가 이미지 읽도록 하기
+	                reader.readAsDataURL(input.files[0])
+	            }
+	        }
         </script>
         
     </head>
     <body>
+    
+    	<%
+    		String mid = null;
+    		String id = null;
+    		if(session.getAttribute("mid") == null || session.getAttribute("id") == null) { %>
+				<script>
+				alert("로그인 후 이용해주세요.");
+				location.href = "loginpage.html";
+				</script>
+		<%
+    		} else {
+    			mid = session.getAttribute("mid").toString();
+    			id = session.getAttribute("id").toString();
+    		}
+    	%>
         <!-- Navigation-->
         <%@ include file="./module/header.jsp" %>
        
@@ -42,8 +57,8 @@
                     <div class="col-md-6"><img id="preview_image" class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
                     
                     <div class="col-md-6">
-                    <form action="./uploaditempage-db.jsp" method="post" enctype="multipart/form-data">
-                   		<input type="file" class="form-control mb-2" id="input_image" onchange="previewImage(event);" />
+                    <form action="./uploaditempage-result.jsp" method="post" enctype="multipart/form-data">
+                   		<input type="file" class="form-control mb-2" name="input_image" id="input_image" onchange="previewImage(event);" />
                    		<input type="text" class="form-control mb-2" placeholder="상품 이름" name="item_name" required/>
                    		
                    		<div class="input-group mb-2">

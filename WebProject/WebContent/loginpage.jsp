@@ -35,6 +35,7 @@
 		rs.last();
 		count = rs.getRow();
 		rs.beforeFirst();
+		rs.next();
 		mid = rs.getString("mid");
 		
 		rs.close();
@@ -52,6 +53,7 @@
 	if(count > 0){
 		session.setAttribute("id", id);
 		session.setAttribute("mid", mid);
+		System.out.println("id : " + id + "\nmid : "+mid);
 		response.sendRedirect("mainpage.jsp"); 
 	}
 	else{	//로그인 실패시
