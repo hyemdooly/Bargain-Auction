@@ -85,16 +85,16 @@
 						//데이터베이스 접속
 						Class.forName("com.mysql.jdbc.Driver");
 						con = DriverManager.getConnection(driver, "root", "0000");
-						sql = "insert into item(upload_mem_id, bid_mem_id, name, start_price, current_price, tracking_number, image, tracking_company, end_date, upload_date, description)"
-								+ "values (?, null, ?, ?, ?, null, ?, null, ?, ?, ?)";
+						sql = "insert into item(upload_mem_id, bid_mem_id, name, start_price, current_price, tracking_number, image, tracking_company, end_date, upload_date, description, status_end)"
+								+ "values (?, null, ?, ?, ?, null, ?, null, ?, ?, ?, 0)";
 						pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						pstmt.setInt(1, Integer.parseInt(mid));
 						pstmt.setString(2, name);
 						pstmt.setInt(3, start_price);
 						pstmt.setInt(4, current_price);
 						pstmt.setString(5, newImageName);
-						pstmt.setTimestamp(6, upload_date);
-						pstmt.setTimestamp(7, end_date);
+						pstmt.setTimestamp(6, end_date);
+						pstmt.setTimestamp(7, upload_date);
 						pstmt.setString(8, description);
 						pstmt.executeUpdate();
 						pstmt.close();

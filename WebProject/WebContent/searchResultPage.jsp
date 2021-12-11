@@ -49,9 +49,7 @@
 							<div class="col mb-5">
 		                        <div class="card h-100">
 		                        	 <%
-				                        java.time.LocalDateTime end_date = java.time.LocalDateTime.parse(rs.getString("end_date"), java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-				                        java.time.LocalDateTime now_date = java.time.LocalDateTime.now();
-				                        if(end_date.isBefore(now_date)){ %>
+				                        if(rs.getInt("status_end") == 0){ %>
 				                        	<div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 0.5rem">진행중</div>
 				                        	<% 
 				                        } else {%>

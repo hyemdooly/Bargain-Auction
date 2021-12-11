@@ -52,9 +52,7 @@
                         <div class="d-flex">
                           <%
                           		   currentPrice = rs.getInt("current_price");
-				                   java.time.LocalDateTime end_date = java.time.LocalDateTime.parse(rs.getString("end_date"), java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-				                   java.time.LocalDateTime now_date = java.time.LocalDateTime.now();
-				                   if(end_date.isBefore(now_date)){ %>
+				                   if(rs.getInt("status_end") == 0){ %>
 				                        <div class="input-group me-3">
 									  		<input type="text" class="form-control text-center" style="max-width: 1000px" id="price" placeholder="제안할 가격을 입력해주세요..." name="start_price"/>
 			                   		  		<span class="input-group-text">원</span>
