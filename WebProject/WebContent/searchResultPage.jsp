@@ -17,7 +17,6 @@
     	String driver = "jdbc:mysql://localhost:3306/bargainAuction?serverTimezone=UTC";
 		Connection con = null;
 		Statement stmt = null;
-		PreparedStatement pstmt = null;
 		String sql = null;
 		ResultSet rs = null;
 		int count = 0;
@@ -37,7 +36,7 @@
 		    		Class.forName("com.mysql.jdbc.Driver");
 					con = DriverManager.getConnection(driver, "root", "0000");
 					stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-					sql = "select * from item where name='"+keyword+"'";
+					sql = "select * from item where name like '%"+keyword+"%'";
 					rs = stmt.executeQuery(sql);
 					rs.last();
 					count = rs.getRow();
@@ -68,7 +67,6 @@
 		                            </div>
 		                        </div>
 		                    </div>
-	
 						<%				
 						}
 					} else { %>

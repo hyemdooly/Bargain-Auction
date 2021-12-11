@@ -51,6 +51,7 @@
 					String name = null;
 					int start_price = 0;
 					int current_price = 0;
+					String description = null;
 					String image = null;
 					java.util.Date date = new java.util.Date();
 					Timestamp upload_date = new Timestamp(date.getTime());
@@ -67,12 +68,13 @@
 						name = multi.getParameter("item_name");
 						start_price = Integer.parseInt(multi.getParameter("start_price"));
 						current_price = start_price;
+						description = multi.getParameter("item_description");
 						
 						//데이터베이스 접속
 						Class.forName("com.mysql.jdbc.Driver");
 						con = DriverManager.getConnection(driver, "root", "0000");
-						sql = "insert into item(upload_mem_id, bid_mem_id, name, start_price, current_price, tracking_number, image, tracking_company, end_date, upload_date)"
-								+ "values (?, null, ?, ?, ?, null, ?, null, ?, ?)";
+						sql = "insert into item(upload_mem_id, bid_mem_id, name, start_price, current_price, tracking_number, image, tracking_company, end_date, upload_date, description)"
+								+ "values (?, null, ?, ?, ?, null, ?, null, ?, ?, ?)";
 						pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 						pstmt.setInt(1, Integer.parseInt(mid));
 						pstmt.setString(2, name);
@@ -81,6 +83,7 @@
 						pstmt.setString(5, image);
 						pstmt.setTimestamp(6, upload_date);
 						pstmt.setTimestamp(7, end_date);
+						pstmt.setString(8, description);
 						pstmt.executeUpdate();
 						pstmt.close();
 						con.close();
