@@ -12,6 +12,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
     </head>
     <body>
         <!-- Navigation-->
@@ -23,6 +24,8 @@
 		Statement stmt = null;
 		String sql = null;
 		ResultSet rs = null;
+		int currentPrice = 0;
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		try {
 			sql = "select * from item where id="+request.getParameter("id");
@@ -43,21 +46,36 @@
                         </div>
                         <p class="lead"><%= rs.getString("description") %></p>
                         <div class="d-flex">
-                          
-                            <div class="input-group me-3">
-						  		<input type="text" class="form-control text-center" style="max-width: 1000px" id="price" placeholder="가격을 입력해주세요." name="start_price" required/>
-                   		  		<span class="input-group-text">원</span>
-							</div>
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button" >
-                                	 경매 신청하기
-                            </button>
+                          <%
+                          		   currentPrice = rs.getInt("current_price");
+				                   java.time.LocalDateTime end_date = java.time.LocalDateTime.parse(rs.getString("end_date"), java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+				                   java.time.LocalDateTime now_date = java.time.LocalDateTime.now();
+				                   if(end_date.isBefore(now_date)){ %>
+				                        <div class="input-group me-3">
+									  		<input type="text" class="form-control text-center" style="max-width: 1000px" id="price" placeholder="제안할 가격을 입력해주세요..." name="start_price"/>
+			                   		  		<span class="input-group-text">원</span>
+										</div>
+			                            <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="submit()">
+			                                	 경매 신청하기
+			                            </button>
+				                        <% 
+				                   } else {%>
+				                        <div class="input-group me-3">
+									  		<input type="text" class="form-control text-center" style="max-width: 1000px" id="price" placeholder="경매가 종료된 물품입니다." name="start_price" disabled/>
+			                   		  		<span class="input-group-text">원</span>
+										</div>
+			                            <button class="btn btn-outline-dark flex-shrink-0" type="button" disabled=”disabled”>
+			                                	경매 신청하기
+			                            </button>
+				                   <%
+				                   }
+		                        %>
                         </div>
                     </div>
                 </div>
             </div>
             <% }
 		} catch(Exception e) {%>
-			
 			<script>
 				alert("에러가 발생했습니다. 잠시 후 시도해주세요.");
 				history.back();
@@ -71,6 +89,27 @@
        <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Dongguk University &copy; WebProgramming 2021</p></div>
         </footer>
+        <script type="text/javascript">
+			function submit() {
+				var price = document.getElementById("price").value;
+				var id = "${id}";
+				console.log(id);
+				var current_price = <%= currentPrice %>;
+				if(id == null || id == "") {
+					alert("로그인 후 이용해주세요.")
+					location.href = "loginpage.html";
+				} else {
+					if(current_price >= price) {
+						alert("현재가보다 높은 가격을 입력해주세요.");
+					} else {
+						alert("경매 신청을 완료했습니다!");
+						location.href = "itempage-result.jsp?item_id="+<%=id%>+"&price="+price;
+					}
+				}
+
+			}
+		
+		</script>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->

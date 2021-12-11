@@ -20,7 +20,7 @@
 		String sql = null;
 		ResultSet rs = null;
 		int count = 0;
-		%>
+	%>
 		
 <body>
 		<!-- Header -->
@@ -48,8 +48,18 @@
 						%> 
 							<div class="col mb-5">
 		                        <div class="card h-100">
-		                        	<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">종료</div>
-		                            <!-- Product image-->
+		                        	 <%
+				                        java.time.LocalDateTime end_date = java.time.LocalDateTime.parse(rs.getString("end_date"), java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+				                        java.time.LocalDateTime now_date = java.time.LocalDateTime.now();
+				                        if(end_date.isBefore(now_date)){ %>
+				                        	<div class="badge bg-primary text-white position-absolute" style="top: 0.5rem; right: 0.5rem">진행중</div>
+				                        	<% 
+				                        } else {%>
+				                        	<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">종료</div>
+				                        <%
+				                        }
+		                        	%>
+		                        	<!-- Product image-->
 		                            <img class="card-img-top" src="${pageContext.request.contextPath}/upload/<%=rs.getString("image")%>" alt="..." />
 		                            <!-- Product details-->
 		                            <div class="card-body p-4">
