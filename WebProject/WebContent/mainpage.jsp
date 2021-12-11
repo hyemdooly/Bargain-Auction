@@ -42,7 +42,7 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-3">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <%
     
 		    	try {
@@ -92,8 +92,9 @@
 						<%				
 						}
 					} else { %>
-						<div class="container text-center pt-5">
-				            <h4 class="pb-3">올라온 경매 물품이 없습니다. 경매를 시작해보세요!</h4>
+						<div class="container text-center">
+				            <h4>올라온 경매 물품이 없습니다.</h4>
+				            <h4>경매를 시작해보세요!</h4>
 				       	</div>
 					
 					<%

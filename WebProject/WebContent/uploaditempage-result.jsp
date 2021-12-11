@@ -3,7 +3,9 @@
 <%@ page import="com.oreilly.servlet.MultipartRequest"  %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.io.*" %>
 <%@ page import="java.sql.*" %>
+<%@ page import="java.text.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
  	<head>
@@ -70,6 +72,16 @@
 						current_price = start_price;
 						description = multi.getParameter("item_description");
 						
+						// 파일 이름 변경
+						SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+						String newImageName = (dateFormat.format(upload_date))+"-by-"+mid+image.substring(image.lastIndexOf("."));
+						
+						File upfile1 = new File(uploadPath+"/"+image);
+						File upfile2 = new File(uploadPath+"/"+newImageName);
+						if(!upfile1.renameTo(upfile2)) {
+							throw new Exception("파일 이름 변경에 문제가 발생했습니다.");
+						}
+						
 						//데이터베이스 접속
 						Class.forName("com.mysql.jdbc.Driver");
 						con = DriverManager.getConnection(driver, "root", "0000");
@@ -80,7 +92,7 @@
 						pstmt.setString(2, name);
 						pstmt.setInt(3, start_price);
 						pstmt.setInt(4, current_price);
-						pstmt.setString(5, image);
+						pstmt.setString(5, newImageName);
 						pstmt.setTimestamp(6, upload_date);
 						pstmt.setTimestamp(7, end_date);
 						pstmt.setString(8, description);

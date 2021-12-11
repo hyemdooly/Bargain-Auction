@@ -26,17 +26,20 @@
 		ResultSet rs = null;
 		int currentPrice = 0;
 		int id = Integer.parseInt(request.getParameter("id"));
+		int upload_mem_id = 0;
 		
 		try {
 			sql = "select * from item where id="+request.getParameter("id");
 			con = DriverManager.getConnection(driver, "root", "0000");
 			stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			rs = stmt.executeQuery(sql);
-			while(rs.next()) { %>
+			while(rs.next()) {
+				upload_mem_id = Integer.parseInt(rs.getString("upload_mem_id"));
+				%>
         <!-- Product section-->
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${pageContext.request.contextPath}/upload/<%=rs.getString("image")%>" alt="..." /></div>
                     <div class="col-md-6">
                         <div class="small mb-1">ID : <%= rs.getString("id") %></div>
                         <h1 class="display-5 fw-bolder"><%= rs.getString("name") %></h1>
@@ -92,12 +95,16 @@
         <script type="text/javascript">
 			function submit() {
 				var price = document.getElementById("price").value;
-				var id = "${id}";
-				console.log(id);
+				var session_id = "${mid}";
+				var upload_mem_id = <%= upload_mem_id %>;
+				console.log(session_id);
+				console.log(upload_mem_id);
 				var current_price = <%= currentPrice %>;
-				if(id == null || id == "") {
+				if(session_id == null || session_id == "") {
 					alert("로그인 후 이용해주세요.")
 					location.href = "loginpage.html";
+				} else if(session_id == upload_mem_id) {
+					alert("경매를 올린 사람은 경매에 참여할 수 없습니다.");
 				} else {
 					if(current_price >= price) {
 						alert("현재가보다 높은 가격을 입력해주세요.");
