@@ -17,10 +17,14 @@
     </head>
     <%
 	String driver = "jdbc:mysql://localhost:3306/bargainAuction?serverTimezone=UTC";
-	Connection con = null;
+    Connection con = null;
+    Connection con2 = null;
 	Statement stmt = null;
+	Statement stmt2 = null;
 	String sql = null;
+	String sql2 = null;
 	ResultSet rs = null;
+	ResultSet rs2 = null;
 	int currentPoint = 0;
 	int expectedPoint = 0;
 	String address = null;
@@ -84,7 +88,7 @@
 					      <th scope="col">물품명</th>
 					      <th scope="col">현재가</th>
 					      <th scope="col">진행 상태</th>
-					      <th scope="col">송장번호</th>
+					      <th scope="col">받는이 주소 및 송장번호</th>
 					    </tr>
 					  </thead>
 					  <tbody>
@@ -114,7 +118,29 @@
 									    <td>
 									    	<div class="card-footer border-top-0 bg-transparent p-auto">
 								              <div class="text-center">
-								              <form action="mypage-updatetracking.jsp" mtehod="get">
+								              <%
+								              	try {
+								              		Class.forName("com.mysql.jdbc.Driver");
+									            	con2 = DriverManager.getConnection(driver, "root", "0000");
+									          		stmt2 = con2.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+									          		sql2 = "select address, address_detail from member where mid="+rs.getInt("bid_mem_id");
+									          		rs2 = stmt2.executeQuery(sql2);
+									          		while(rs2.next()) { %>
+									          			<div><%= rs2.getString("address")%></div>
+									          			<div class="mb-1"><%= rs2.getString("address_detail")%></div>
+									          		<% }
+								          			
+									          	} catch(ClassNotFoundException e) {
+									        		System.out.println("드라이버 로드 실패");
+									        	} catch(SQLException e) {
+									                  System.out.println("DB 접속 실패");
+									                  e.printStackTrace();
+									          	}
+							      
+								              
+								              %>
+								              
+								              <form action="mypage-updatetracking.jsp" method="get">
 								            	<input type="hidden" name="item_id" value="<%= rs.getString("id") %>" >
 								              	<input type="text" class="form-control mb-1" placeholder="택배사를 입력해주세요." name="tracking_company" value="<%= rs.getString("tracking_company") %>">
 								                <input type="text" class="form-control mb-1" placeholder="송장번호를 입력해주세요." name="tracking_number" value="<%= rs.getString("tracking_number") %>">
@@ -211,7 +237,7 @@
 						    <div class="text-center m-auto">
 						    	<input type="text" class="form-control" placeholder="주소" value="<%= address %>" name="address" id="address"/>
 						    	<input type="text" class="form-control mt-2" placeholder="상세 주소" value="<%= addressDetail %>" name="address_detail" id="address_detail"/>
-						    	<button class="btn btn-primary mt-2">주소 변경</button>
+						    	<button class="btn btn-primary mt-2" onclick="editAddress();">주소 변경</button>
 						    </div>
 						    <div class="text-center">
 						    	<input type="password" class="form-control" placeholder="새 비밀번호" name="new_password" id="new_password"/>
@@ -237,11 +263,18 @@
 			} else if(new_password === new_password_confirm) {
 				location.href = "mypage-updatepassword.jsp?new_password="+new_password;
 			} else {
-			
 				alert("새 비밀번호와 확인이 일치하는지 확인해주세요!");
 			}
-			
-			
+		}
+		function editAddress() {
+			var address = document.getElementById("address").value;
+			var address_detail = document.getElementById("address_detail").value;
+			if(new_password == "" || new_password_confirm == "") {
+				alert("주소 입력 칸을 모두 채워주세요!");
+				
+			} else {
+				location.href = "mypage-updateaddress.jsp?address="+address+"&address_detail="+address_detail;
+			}
 		}
 	</script>
         <!-- Bootstrap core JS-->

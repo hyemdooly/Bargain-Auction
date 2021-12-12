@@ -119,8 +119,8 @@
 						location.href = "itempage-result.jsp?item_id="+<%=id%>+"&price="+price;
 					}
 				}
-
 			}
+			
 		
 		</script>
         <!-- Bootstrap core JS-->
