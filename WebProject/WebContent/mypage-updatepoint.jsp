@@ -18,7 +18,7 @@
 	int mid = Integer.parseInt(session.getAttribute("mid").toString());
 	int addPoint = Integer.parseInt(request.getParameter("charge_point"));
 	int point = Integer.parseInt(request.getParameter("current_point")) + addPoint;
-	int expectedPoint = Integer.parseInt(request.getParameter("expected_point")) - addPoint;
+	int expectedPoint = Integer.parseInt(request.getParameter("expected_point")) + addPoint;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(driver, "root", "0000");

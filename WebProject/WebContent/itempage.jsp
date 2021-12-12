@@ -27,6 +27,7 @@
 		int currentPrice = 0;
 		int id = Integer.parseInt(request.getParameter("id"));
 		int upload_mem_id = 0;
+		int bid_mem_id = 0;
 		int current_point = 0;
 		
 		try {
@@ -36,6 +37,9 @@
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				upload_mem_id = Integer.parseInt(rs.getString("upload_mem_id"));
+				if(rs.getString("bid_mem_id") != null ) {
+					bid_mem_id = Integer.parseInt(rs.getString("bid_mem_id"));
+				}
 				%>
         <!-- Product section-->
             <div class="container px-4 px-lg-5 my-5">
@@ -84,7 +88,10 @@
 				current_point = rs.getInt("expected_point");
 			}
 			
-		} catch(Exception e) {%>
+		} catch(Exception e) {
+			e.printStackTrace();
+		%>
+			
 			<script>
 				alert("에러가 발생했습니다. 잠시 후 시도해주세요.");
 				history.back();
@@ -101,6 +108,7 @@
 				var price = document.getElementById("price").value;
 				var session_id = "${mid}";
 				var upload_mem_id = <%= upload_mem_id %>;
+				var bid_mem_id = <%= bid_mem_id %>;
 				console.log(session_id);
 				console.log(upload_mem_id);
 				var current_price = <%= currentPrice %>;
@@ -109,7 +117,9 @@
 					location.href = "loginpage.html";
 				} else if(session_id == upload_mem_id) {
 					alert("경매를 올린 사람은 경매에 참여할 수 없습니다.");
-				} else {
+				} else if(session_id == bid_mem_id) {
+					alert("이미 최고가로 가격을 제안한 상품입니다.");
+				}else {
 					if(current_price >= price) {
 						alert("현재가보다 높은 가격을 입력해주세요.");
 					} else if(price > <%= current_point %>){

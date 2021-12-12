@@ -58,7 +58,8 @@
 		try{
 			// insert
 	        sql = "insert into member(id, nickname, password, email, address, address_detail, point, expected_point) value(?, ?, ?, ?, ?, ?, 0, 0)";
-	        pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+	        con = DriverManager.getConnection(driver, "root", "0000");
+			pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);

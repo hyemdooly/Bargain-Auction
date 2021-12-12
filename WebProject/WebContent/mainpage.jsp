@@ -98,6 +98,7 @@
 					}
 		    	} catch (ClassNotFoundException e) { 
 					System.out.println("드라이버 로드 실패");
+					e.printStackTrace();
 				} catch (SQLException e) {
 			        System.out.println("DB 접속 실패");
 			        e.printStackTrace();

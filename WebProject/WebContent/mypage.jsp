@@ -214,7 +214,7 @@
 						    <div class="text-center m-auto">
 						    	<h4>현재 포인트</h4>
 						    	<h3><%= currentPoint %></h3>
-						    	<span class="text-muted">예정 포인트 : <%= expectedPoint %></span>
+						    	<span class="text-muted">사용 가능 포인트 : <%= expectedPoint %></span>
 						    </div>
 						    <div class="text-center">
 	
