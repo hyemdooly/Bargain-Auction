@@ -81,7 +81,7 @@
 			sql = "select * from member where mid="+session.getAttribute("mid");
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
-				current_point = rs.getInt("point");
+				current_point = rs.getInt("expected_point");
 			}
 			
 		} catch(Exception e) {%>

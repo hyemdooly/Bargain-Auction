@@ -22,9 +22,11 @@
 	String sql = null;
 	ResultSet rs = null;
 	int currentPoint = 0;
+	int expectedPoint = 0;
 	String address = null;
 	String addressDetail = null;
 	String password = null;
+	
 	
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -37,6 +39,7 @@
 			address = rs.getString("address");
 			addressDetail = rs.getString("address_detail");
 			password = rs.getString("password");
+			expectedPoint = rs.getInt("expected_point");
 		}
 		
 	} catch(ClassNotFoundException e) {
@@ -185,10 +188,12 @@
 						    <div class="text-center m-auto">
 						    	<h4>현재 포인트</h4>
 						    	<h3><%= currentPoint %></h3>
+						    	<span class="text-muted">예정 포인트 : <%= expectedPoint %></span>
 						    </div>
 						    <div class="text-center">
 	
 							    <form action="mypage-updatepoint.jsp" mtehod="get">
+							    	<input type="hidden" name="expected_point" value="<%= expectedPoint %>" >
 							    	<input type="hidden" name="current_point" value="<%= currentPoint %>" >
 							    	<input type="text" class="form-control" placeholder="충전할 포인트" name="charge_point">
 							    	<button class="btn btn-primary mt-2">포인트 충전</button>

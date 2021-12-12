@@ -57,7 +57,7 @@
 	} else {
 		try{
 			// insert
-	        sql = "insert into member(id, nickname, password, email, address, address_detail, point) value(?, ?, ?, ?, ?, ?, 0)";
+	        sql = "insert into member(id, nickname, password, email, address, address_detail, point, expected_point) value(?, ?, ?, ?, ?, ?, 0, 0)";
 	        pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 	
 			pstmt.setString(1, id);

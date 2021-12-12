@@ -18,11 +18,12 @@
 	int mid = Integer.parseInt(session.getAttribute("mid").toString());
 	int addPoint = Integer.parseInt(request.getParameter("charge_point"));
 	int point = Integer.parseInt(request.getParameter("current_point")) + addPoint;
+	int expectedPoint = Integer.parseInt(request.getParameter("expected_point")) - addPoint;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection(driver, "root", "0000");
 		stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-		sql = "update member set point="+point+" where mid="+mid;
+		sql = "update member set point="+point+", expected_point="+expectedPoint+" where mid="+mid;
 		stmt.executeUpdate(sql);
 	} catch(ClassNotFoundException e) {
 		System.out.println("드라이버 로드 실패");
