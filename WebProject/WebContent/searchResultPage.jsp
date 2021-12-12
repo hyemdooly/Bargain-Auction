@@ -78,7 +78,7 @@
 						<%				
 						}
 					} else { %>
-						<div class="container text-center pt-5">
+						<div class="container text-center mt-5 mb-5">
 				            <h4 class="pb-3">검색결과가 없습니다.</h4>
 				       	</div>
 					
